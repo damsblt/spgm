@@ -34,9 +34,27 @@ Ouvrir [http://localhost:3000](http://localhost:3000).
 
 L’espace membres (authentifié) n’est pas migré.
 
-## Déploiement (plus tard)
+## Déploiement Vercel
 
-Compatible Vercel : importer le dossier `policemunicipale-site` (ou définir le root directory sur Vercel).
+1. Sur [vercel.com/new](https://vercel.com/new), importer le repo GitHub `damsblt/spgm`.
+2. **Root Directory:** `policemunicipale-site`
+3. Framework: **Next.js** (détecté via `vercel.json`)
+4. Deploy — Vercel fournira une URL `*.vercel.app`.
+
+### Domaine policemunicipale.ch (plus tard, par l’utilisateur)
+
+Dans le projet Vercel → **Settings → Domains** → ajouter `policemunicipale.ch` / `www`, puis suivre les enregistrements DNS indiqués. **Ne pas modifier Infomaniak tant que la bascule n’est pas voulue.**
+
+### Deploy CLI (avec compte)
+
+```bash
+cd policemunicipale-site
+npx vercel login
+npx vercel --yes          # preview
+npx vercel --prod --yes   # production
+```
+
+Sans token local, un deploy anonyme temporaire est possible (`npx vercel deploy --temporary --yes`) puis à **claimer** sur Vercel.
 
 ## Build
 
