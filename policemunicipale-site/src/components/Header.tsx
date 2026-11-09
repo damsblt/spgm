@@ -25,10 +25,11 @@ export function Header() {
         <Link href="/" className="brand" onClick={() => setOpen(false)}>
           <Image
             src="/images/home-logo41.png"
-            alt="Logo SPMG"
-            width={52}
-            height={52}
+            alt="SPMG — Syndicat des Polices Municipales Genevoises"
+            width={600}
+            height={100}
             className="brand__logo"
+            sizes="(max-width: 860px) 300px, 520px"
             priority
           />
           <span className="brand__text">
