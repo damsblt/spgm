@@ -72,15 +72,6 @@ export default function HomePage() {
         </div>
         <div className="hero__veil" />
         <div className="hero__content">
-          <Image
-            src="/images/home-logo41.png"
-            alt="SPMG — Syndicat des Polices Municipales Genevoises"
-            width={600}
-            height={100}
-            className="hero__logo"
-            sizes="(max-width: 860px) 94vw, 600px"
-            priority
-          />
           <p className="hero__kicker">Policemunicipale.ch</p>
           <h1>SPMG</h1>
           <p className="hero__lead">

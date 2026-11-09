@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { BrandMark } from "@/components/BrandMark";
 
 const NAV = [
   { href: "/", label: "Accueil" },
@@ -23,21 +23,7 @@ export function Header() {
     <header className="site-header">
       <div className="site-header__inner">
         <Link href="/" className="brand" onClick={() => setOpen(false)}>
-          <Image
-            src="/images/home-logo41.png"
-            alt="SPMG — Syndicat des Polices Municipales Genevoises"
-            width={600}
-            height={100}
-            className="brand__logo"
-            sizes="(max-width: 860px) 300px, 520px"
-            priority
-          />
-          <span className="brand__text">
-            <span className="brand__name">SPMG</span>
-            <span className="brand__tag">
-              Syndicat des Polices Municipales Genevoises
-            </span>
-          </span>
+          <BrandMark size="header" />
         </Link>
 
         <button
