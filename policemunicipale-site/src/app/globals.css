@@ -776,6 +776,25 @@ img {
   font-weight: 600;
 }
 
+.members-content {
+  max-width: 52rem;
+}
+
+.members-content h1 {
+  font-size: 1.35rem;
+  margin-top: 1.75rem;
+}
+
+.members-content h3 {
+  font-size: 1.05rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.members-content a {
+  word-break: break-word;
+}
+
 /* Footer */
 .site-footer {
   margin-top: 2rem;

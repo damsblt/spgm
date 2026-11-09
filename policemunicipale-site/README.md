@@ -39,7 +39,7 @@ Ouvrir [http://localhost:3000](http://localhost:3000).
 - Env (préféré): **`MEMBERS_PASSWORD`**
 - Alias accepté: **`ESPACE_MEMBRES_PASSWORD`** (si `MEMBERS_PASSWORD` est vide)
 - Cookie httpOnly `spmg_members` après succès (30 jours)
-- Contenu WordPress membres non exporté → page placeholder + liens utiles
+- Contenu WordPress membres exporté (`content/espace-membres/` + `public/espace-membres/`) — PDF/documents derrière le gate
 
 ```bash
 cp .env.example .env.local

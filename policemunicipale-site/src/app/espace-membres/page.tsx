@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import fs from "fs";
+import path from "path";
 import { MembersLoginForm } from "@/components/MembersLoginForm";
+import { MarkdownBody } from "@/components/MarkdownBody";
 import {
   getMembersPassword,
   isMembersAuthenticated,
 } from "@/lib/members-auth";
+import { markdownToHtml } from "@/lib/markdown";
 import { logoutMembers } from "./actions";
 
 export const metadata: Metadata = {
@@ -14,28 +17,26 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-const RECOVERED_LINKS = [
-  {
-    label: "Formulaire d’admission SPMG-FSFP (PDF)",
-    href: "https://policemunicipale.ch/wp-content/uploads/2024/10/Demande-dadmission-au-SPMG-FSFP.pdf",
-  },
-  {
-    label: "Changement d’adresse (PDF)",
-    href: "https://policemunicipale.ch/wp-content/uploads/2024/10/Formulaire-dannonce-de-changement-dadresse-SPMG-FSFP.pdf",
-  },
-  {
-    label: "Demande de réadmission (PDF)",
-    href: "https://policemunicipale.ch/wp-content/uploads/2024/10/Demande-de-readmission-au-SPMG-FSFP.pdf",
-  },
-  {
-    label: "Contact — info@policemunicipale.ch",
-    href: "mailto:info@policemunicipale.ch",
-  },
-];
+function getMembersMarkdown(): string | null {
+  const filePath = path.join(
+    process.cwd(),
+    "content",
+    "espace-membres",
+    "index.md",
+  );
+  if (!fs.existsSync(filePath)) return null;
+  const raw = fs.readFileSync(filePath, "utf8");
+  // Drop export front-matter style header lines before first real section
+  const parts = raw.split(/\n---\n/);
+  const body = parts.length > 1 ? parts.slice(1).join("\n---\n").trim() : raw;
+  return body;
+}
 
 export default async function EspaceMembresPage() {
   const configured = Boolean(getMembersPassword());
   const authenticated = await isMembersAuthenticated();
+  const markdown = authenticated ? getMembersMarkdown() : null;
+  const html = markdown ? await markdownToHtml(markdown) : null;
 
   return (
     <>
@@ -48,7 +49,7 @@ export default async function EspaceMembresPage() {
         </section>
       </div>
 
-      <section className="section section--narrow">
+      <section className={`section ${authenticated ? "" : "section--narrow"}`.trim()}>
         {!configured ? (
           <div className="notice">
             <p>
@@ -60,13 +61,13 @@ export default async function EspaceMembresPage() {
             </p>
           </div>
         ) : !authenticated ? (
-          <>
+          <div className="section--narrow" style={{ padding: 0 }}>
             <p>
               Saisissez le mot de passe communiqué par le comité pour accéder
               aux documents réservés.
             </p>
             <MembersLoginForm />
-          </>
+          </div>
         ) : (
           <div className="members-panel">
             <div className="members-panel__head">
@@ -78,36 +79,16 @@ export default async function EspaceMembresPage() {
               </form>
             </div>
 
-            <div className="notice">
-              <p>
-                Le contenu WordPress de l’espace membres (
-                <code>/media/</code>) n’était pas exportable (page protégée /
-                vide). Le contenu détaillé arrivera ici ultérieurement.
-              </p>
-            </div>
-
-            <h2 className="page-title" style={{ fontSize: "1.35rem" }}>
-              Documents utiles (récupérés)
-            </h2>
-            <p className="lede" style={{ marginBottom: "1rem" }}>
-              Liens publics déjà présents sur le site exporté, utiles aux
-              membres en attendant la migration complète.
-            </p>
-            <ul className="members-links">
-              {RECOVERED_LINKS.map((item) => (
-                <li key={item.href}>
-                  <a href={item.href} rel="noreferrer" target="_blank">
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-              <li>
-                <Link href="/formulaires">Page Formulaires</Link>
-              </li>
-              <li>
-                <Link href="/comite">Le comité</Link>
-              </li>
-            </ul>
+            {html ? (
+              <MarkdownBody html={html} className="members-content" />
+            ) : (
+              <div className="notice">
+                <p>
+                  Contenu membres introuvable dans{" "}
+                  <code>content/espace-membres/index.md</code>.
+                </p>
+              </div>
+            )}
           </div>
         )}
       </section>
