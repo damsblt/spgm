@@ -15,6 +15,7 @@ export function Footer() {
         <div className="site-footer__links">
           <Link href="/contact">Contact</Link>
           <Link href="/formulaires">Adhésion</Link>
+          <Link href="/espace-membres">Espace membres</Link>
           <Link href="/mentions">Mentions légales</Link>
           <a href="mailto:info@policemunicipale.ch">info@policemunicipale.ch</a>
         </div>

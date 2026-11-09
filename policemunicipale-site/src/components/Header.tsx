@@ -12,6 +12,7 @@ const NAV = [
   { href: "/partenaires", label: "Partenaires" },
   { href: "/medias", label: "Médias" },
   { href: "/formulaires", label: "Formulaires" },
+  { href: "/espace-membres", label: "Espace membres" },
   { href: "/contact", label: "Contact" },
 ];
 
