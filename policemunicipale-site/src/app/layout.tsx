@@ -16,13 +16,40 @@ const body = Source_Sans_3({
   variable: "--font-body-loaded",
 });
 
+const SITE_URL = "https://policemunicipale.vercel.app";
+const SITE_TITLE = "SPMG — Syndicat des Polices Municipales Genevoises";
+const SITE_DESCRIPTION =
+  "Syndicat des Polices Municipales Genevoises — représentation des agents de police municipale du canton de Genève.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "SPMG — Syndicat des Polices Municipales Genevoises",
+    default: SITE_TITLE,
     template: "%s · SPMG",
   },
-  description:
-    "Site brouillon du Syndicat des Polices Municipales Genevoises (policemunicipale.ch).",
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: "SPMG",
+    locale: "fr_CH",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Agents de police municipale — SPMG",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
