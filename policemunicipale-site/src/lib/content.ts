@@ -84,6 +84,7 @@ function excerptFrom(markdown: string, max = 180): string {
   const text = markdown
     .replace(/!\[[^\]]*\]\([^)]+\)/g, "")
     .replace(/\[([^\]]*)\]\([^)]+\)/g, "$1")
+    .replace(/<[^>]+>/g, " ")
     .replace(/[#>*_`|-]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
