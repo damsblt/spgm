@@ -1,32 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { FORM_DEFINITIONS } from "@/lib/formulaires";
 
 export const metadata: Metadata = {
   title: "Formulaires",
 };
-
-const FORMS = [
-  {
-    title: "Adhésion au SPMG",
-    description:
-      "Pour adhérer au Syndicat des Polices Municipales Genevoises, téléchargez le formulaire, joignez une photo passeport, puis renvoyez le dossier par courriel ou courrier.",
-    href: "https://policemunicipale.ch/wp-content/uploads/2024/10/Demande-dadmission-au-SPMG-FSFP.pdf",
-    label: "Télécharger le formulaire d’admission",
-  },
-  {
-    title: "Déménagement",
-    description:
-      "Communiquez votre changement d’adresse au moyen du formulaire dédié, puis envoyez-le à info@policemunicipale.ch.",
-    href: "https://policemunicipale.ch/wp-content/uploads/2024/10/Formulaire-dannonce-de-changement-dadresse-SPMG-FSFP.pdf",
-    label: "Télécharger le formulaire de changement d’adresse",
-  },
-  {
-    title: "Réadmission",
-    description:
-      "Pour une demande de réadmission au SPMG-FSFP, utilisez le formulaire correspondant.",
-    href: "https://policemunicipale.ch/wp-content/uploads/2024/10/Demande-de-readmission-au-SPMG-FSFP.pdf",
-    label: "Télécharger le formulaire de réadmission",
-  },
-];
 
 export default function FormulairesPage() {
   return (
@@ -35,31 +13,26 @@ export default function FormulairesPage() {
         <section className="section">
           <h1 className="page-title">Formulaires</h1>
           <p className="lede">
-            Adhésion, changement d’adresse et réadmission — documents PDF hébergés
-            sur le site source.
+            Adhésion, changement d’adresse et réadmission — remplissez les
+            formulaires en ligne ; une confirmation vous est envoyée par courriel.
           </p>
         </section>
       </div>
       <section className="section">
         <div className="article-list">
-          {FORMS.map((form) => (
+          {FORM_DEFINITIONS.map((form) => (
             <article
-              key={form.title}
+              key={form.slug}
               className="article-card"
               style={{ gridTemplateColumns: "1fr" }}
             >
               <div>
-                <h3>{form.title}</h3>
+                <h3>{form.shortTitle}</h3>
                 <p>{form.description}</p>
                 <p style={{ marginTop: "0.85rem" }}>
-                  <a
-                    className="btn btn--solid"
-                    href={form.href}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    {form.label}
-                  </a>
+                  <Link className="btn btn--solid" href={`/formulaires/${form.slug}`}>
+                    Remplir le formulaire
+                  </Link>
                 </p>
               </div>
             </article>

@@ -28,10 +28,30 @@ Ouvrir [http://localhost:3000](http://localhost:3000).
 | `/comite` | Comité |
 | `/partenaires` | Partenaires |
 | `/medias` | Galerie médias |
-| `/formulaires` | Adhésion / déménagement / réadmission |
+| `/formulaires` | Liste des formulaires en ligne |
+| `/formulaires/adhesion` | Demande d’admission SPMG/FSFP |
+| `/formulaires/demenagement` | Changement d’adresse |
+| `/formulaires/readmission` | Demande de réadmission |
 | `/contact` | Contact |
 | `/espace-membres` | Espace membres (mot de passe) |
 | `/mentions` | Mentions légales |
+
+### Formulaires en ligne (SMTP Infomaniak)
+
+- Routes: `/formulaires/*`
+- Envoi via Server Action + **nodemailer**
+- Expéditeur fixe: `info@policemunicipale.ch`
+- À la soumission: notification au syndicat + confirmation au demandeur
+- Variables d’environnement:
+
+| Variable | Exemple Infomaniak |
+| --- | --- |
+| `SMTP_HOST` | `mail.infomaniak.com` |
+| `SMTP_PORT` | `587` |
+| `SMTP_USER` | `info@policemunicipale.ch` |
+| `SMTP_PASSWORD` | mot de passe de la boîte |
+
+Sans ces variables, le site build toujours ; l’envoi renvoie un message d’erreur clair.
 
 ### Espace membres
 
@@ -44,16 +64,17 @@ Ouvrir [http://localhost:3000](http://localhost:3000).
 ```bash
 cp .env.example .env.local
 # éditer MEMBERS_PASSWORD=...  (ou ESPACE_MEMBRES_PASSWORD=...)
+# et SMTP_* pour les formulaires
 ```
 
-Sur **Vercel**: Project → Settings → Environment Variables → `MEMBERS_PASSWORD` ou `ESPACE_MEMBRES_PASSWORD` (Preview + Production), puis redéployer.
+Sur **Vercel**: Project → Settings → Environment Variables → `MEMBERS_PASSWORD` / `ESPACE_MEMBRES_PASSWORD` et `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD` (Preview + Production), puis redéployer.
 
 ## Déploiement Vercel
 
 1. Sur [vercel.com/new](https://vercel.com/new), importer le repo GitHub `damsblt/spgm`.
 2. **Root Directory:** `policemunicipale-site`
 3. Framework: **Next.js** (détecté via `vercel.json`)
-4. Ajouter `MEMBERS_PASSWORD` (ou `ESPACE_MEMBRES_PASSWORD`) dans Environment Variables
+4. Ajouter `MEMBERS_PASSWORD` (ou `ESPACE_MEMBRES_PASSWORD`) et les `SMTP_*` Infomaniak dans Environment Variables
 5. Deploy — Vercel fournira une URL `*.vercel.app`.
 
 ### Domaine policemunicipale.ch (plus tard, par l’utilisateur)
