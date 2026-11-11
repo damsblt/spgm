@@ -523,6 +523,18 @@ img {
   border-radius: 4px;
 }
 
+.prose .fb-embed {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.prose .fb-embed iframe {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: top;
+  background: var(--muted, #f3f4f6);
+}
+
 .prose table {
   width: 100%;
   border-collapse: collapse;
