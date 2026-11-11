@@ -7,8 +7,10 @@ export const metadata: Metadata = {
 const MEMBERS = [
   { role: "Présidence", name: "MENETREY Damien" },
   { role: "Vice-présidence", name: "PASTANELLA Davide" },
-  { role: "Secrétaire", name: "LANGEL Thierry" },
+  { role: "Secrétaire", name: "F. Alexandre" },
+  { role: "Vice-secrétaire", name: "CALMAN Jonathan" },
   { role: "Trésorier", name: "WETZEL Denis" },
+  { role: "Membre adjoint", name: "LANGEL Thierry" },
   { role: "Membre adjoint", name: "LECHEVALLIER Damien" },
 ];
 
@@ -24,7 +26,7 @@ export default function ComitePage() {
       <section className="section">
         <div className="committee">
           {MEMBERS.map((member) => (
-            <div className="committee__row" key={member.role}>
+            <div className="committee__row" key={`${member.role}-${member.name}`}>
               <div className="committee__role">{member.role}</div>
               <div className="committee__name">{member.name}</div>
             </div>
