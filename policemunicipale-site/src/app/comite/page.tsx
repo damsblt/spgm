@@ -8,10 +8,10 @@ const MEMBERS = [
   { role: "Présidence", name: "MENETREY Damien" },
   { role: "Vice-présidence", name: "PASTANELLA Davide" },
   { role: "Secrétaire", name: "F. Alexandre" },
-  { role: "Vice-secrétaire", name: "CALMAN Jonathan" },
+  { role: "Vice-secrétaire", name: "KALMAN Jonathan" },
   { role: "Trésorier", name: "WETZEL Denis" },
+  { role: "Vice-trésorier", name: "LECHEVALLIER Damien" },
   { role: "Membre adjoint", name: "LANGEL Thierry" },
-  { role: "Membre adjoint", name: "LECHEVALLIER Damien" },
 ];
 
 export default function ComitePage() {
