@@ -75,6 +75,7 @@ export const FORM_DEFINITIONS: FormDefinition[] = [
         name: "telPortablePro",
         label: "Téléphone portable professionnel",
         type: "tel",
+        required: true,
       },
       {
         name: "emailPrive",
@@ -86,6 +87,7 @@ export const FORM_DEFINITIONS: FormDefinition[] = [
         name: "emailPro",
         label: "Adresse courriel professionnelle",
         type: "email",
+        required: true,
       },
       {
         name: "dateEntreeFonction",
@@ -254,6 +256,7 @@ export const FORM_DEFINITIONS: FormDefinition[] = [
         name: "telPortablePro",
         label: "Téléphone portable professionnel",
         type: "tel",
+        required: true,
       },
       {
         name: "emailPrive",
@@ -265,6 +268,7 @@ export const FORM_DEFINITIONS: FormDefinition[] = [
         name: "emailPro",
         label: "Adresse courriel professionnelle",
         type: "email",
+        required: true,
       },
       {
         name: "dateEntreeFonction",
