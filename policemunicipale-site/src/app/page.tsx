@@ -26,18 +26,6 @@ const HISTORY = [
     text: "Union des Agents Municipaux de la Ville de Genève (UDAM)",
   },
   {
-    year: "2000–2007",
-    text: "Syndicat des Agents de Sécurité Municipale (SASM)",
-  },
-  {
-    year: "2007–2013",
-    text: "Syndicat de la Police Municipale de la Ville de Genève (SPM)",
-  },
-  {
-    year: "2013–auj.",
-    text: "Syndicat des Polices Municipales Genevoises (SPMG)",
-  },
-  {
     year: "1964",
     text: "Adhésion à la Fédération Suisse des Fonctionnaires de police (FSFP)",
   },
@@ -46,8 +34,20 @@ const HISTORY = [
     text: "Adhésion au Groupement des Associations de police du Canton de Genève",
   },
   {
+    year: "2000–2007",
+    text: "Syndicat des Agents de Sécurité Municipale (SASM)",
+  },
+  {
+    year: "2007–2013",
+    text: "Syndicat de la Police Municipale de la Ville de Genève (SPM)",
+  },
+  {
     year: "2013",
     text: "Le 1er octobre, le SPM devient le SPMG pour représenter les agents des communes du canton.",
+  },
+  {
+    year: "2013–auj.",
+    text: "Syndicat des Polices Municipales Genevoises (SPMG)",
   },
   {
     year: "2022",
