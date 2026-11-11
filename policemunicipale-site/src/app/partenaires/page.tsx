@@ -35,6 +35,24 @@ export default async function PartenairesPage() {
           </a>
         </div>
 
+        <h2 className="page-title" style={{ fontSize: "1.5rem" }}>
+          Offre FSPF
+        </h2>
+        <p className="lede">
+          Avantages et offres réservés aux membres via la Fédération Suisse des
+          Fonctionnaires de Police.
+        </p>
+        <p style={{ margin: "1rem 0 2rem" }}>
+          <a
+            className="btn btn--solid"
+            href="https://www.vspb.org/fr/pour_les_membres/offres_pour_les_membres"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Voir l’offre FSPF
+          </a>
+        </p>
+
         {html ? (
           <details style={{ marginTop: "2rem" }}>
             <summary>Contenu exporté (Markdown)</summary>
