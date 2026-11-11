@@ -4,7 +4,7 @@
 
 ---
 
-![Logo SPMG](images/home-logo41.png)
+![Logo SPMG](images/spmg-logo.webp)
 
 ![Bannière](images/home-img-111111-1024x4741.jpg)
 

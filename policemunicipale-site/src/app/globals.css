@@ -103,74 +103,24 @@ img {
   flex: 0 1 auto;
 }
 
-/* Crisp CSS wordmark (replaces scaled home-logo41.png bitmap) */
+/* Official SPMG logo image (1256×740 ≈ 1.70:1) */
 .brand-mark {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.28rem;
+  display: block;
+  line-height: 0;
   min-width: 0;
 }
 
-.brand-mark__row {
-  display: flex;
-  align-items: center;
-}
-
-.brand-mark__blocks {
-  display: flex;
-  gap: 0.28rem;
-}
-
-.brand-mark__block {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.35rem;
-  height: 2.35rem;
-  background: #121212;
-  color: #fff;
-  font-family: var(--font-display);
-  font-size: 1.28rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  border-radius: 0.3rem;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-}
-
-.brand-mark__rule {
+.brand-mark__img {
   display: block;
-  width: 100%;
-  max-width: 13rem;
-  height: 3px;
-  border-radius: 1px;
-  background: linear-gradient(
-    90deg,
-    #c8102e 0%,
-    #c8102e 42%,
-    #e8b923 42%,
-    #e8b923 100%
-  );
+  width: auto;
+  height: 4.5rem;
+  max-width: min(240px, 58vw);
+  object-fit: contain;
 }
 
-.brand-mark__name {
-  font-size: 0.86rem;
-  font-weight: 600;
-  line-height: 1.3;
-  color: var(--navy);
-  max-width: 18rem;
-}
-
-.brand-mark--compact .brand-mark__block {
-  width: 1.65rem;
-  height: 1.65rem;
-  font-size: 0.95rem;
-}
-
-.brand-mark--compact .brand-mark__name {
-  font-size: 0.7rem;
-  max-width: 13rem;
+.brand-mark--compact .brand-mark__img {
+  height: 3.25rem;
+  max-width: min(176px, 48vw);
 }
 
 .site-nav {
@@ -865,15 +815,9 @@ img {
     padding: 0.65rem 1rem;
   }
 
-  .brand-mark__block {
-    width: 1.9rem;
-    height: 1.9rem;
-    font-size: 1.05rem;
-  }
-
-  .brand-mark__name {
-    font-size: 0.72rem;
-    max-width: 12.5rem;
+  .brand-mark__img {
+    height: 3.4rem;
+    max-width: min(188px, 54vw);
   }
 
   .nav-toggle {

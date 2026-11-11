@@ -1,32 +1,34 @@
+import Image from "next/image";
+
 type Props = {
   /** Visual size for header vs compact contexts */
   size?: "header" | "compact";
   className?: string;
 };
 
-const LETTERS = ["S", "P", "M", "G"] as const;
+/** Intrinsic logo dimensions (1256×740). */
+const INTRINSIC = { width: 1256, height: 740 } as const;
 
 /**
- * Vector-style wordmark inspired by home-logo41.png, without scaling the bitmap
- * (avoids pixelation and illegible fine print).
+ * Official SPMG logo (eagle emblem + wordmark).
+ * Display size is controlled via CSS; width/height keep correct aspect ratio.
  */
 export function BrandMark({ size = "header", className = "" }: Props) {
   return (
     <span className={`brand-mark brand-mark--${size} ${className}`.trim()}>
-      <span className="brand-mark__row" aria-hidden="true">
-        <span className="brand-mark__blocks">
-          {LETTERS.map((letter) => (
-            <span key={letter} className="brand-mark__block">
-              {letter}
-            </span>
-          ))}
-        </span>
-      </span>
-      <span className="brand-mark__rule" aria-hidden="true" />
-      <span className="brand-mark__name">
-        Syndicat des Polices Municipales Genevoises
-      </span>
-      <span className="sr-only">SPMG — Syndicat des Polices Municipales Genevoises</span>
+      <Image
+        src="/images/spmg-logo.webp"
+        alt="SPMG — Syndicat des Polices Municipales Genevoises"
+        width={INTRINSIC.width}
+        height={INTRINSIC.height}
+        className="brand-mark__img"
+        priority={size === "header"}
+        sizes={
+          size === "compact"
+            ? "(max-width: 860px) 140px, 168px"
+            : "(max-width: 860px) 168px, 220px"
+        }
+      />
     </span>
   );
 }
