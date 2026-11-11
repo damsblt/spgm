@@ -26,7 +26,7 @@ Ouvrir [http://localhost:3000](http://localhost:3000).
 | `/communications` | Liste des articles |
 | `/communications/[slug]` | Article |
 | `/comite` | Comité |
-| `/partenaires` | Partenaires & sponsors |
+| `/partenaires` | Partenaires |
 | `/medias` | Galerie médias |
 | `/formulaires` | Adhésion / déménagement / réadmission |
 | `/contact` | Contact |
